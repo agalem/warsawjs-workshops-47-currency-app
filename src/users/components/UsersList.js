@@ -1,17 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 
-function UsersList() {
-    const [users, setUsers] = useState([]);
-
-    useEffect(() => {
-        fetch('https://jsonplaceholder.typicode.com/users')
-            .then(res => res.json())
-            .then(result => {
-                console.log(result);
-                setUsers(result);
-            })
-            .catch(error => console.log(error));
-    }, []);
+function UsersList(props) {
+    const { users }= props;
 
     return (
         <ul>
@@ -23,5 +13,8 @@ function UsersList() {
         </ul>
     )
 }
+UsersList.defaultProps = {
+    users: []
+};
 
 export default UsersList;
